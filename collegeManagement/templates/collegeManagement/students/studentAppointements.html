@@ -1,0 +1,27 @@
+
+{% extends "collegeManagement/students/studentsLayout.html" %}
+
+{% block body %}
+    <h1>Appointements</h1>
+    <hr class="border border-danger border-3 opacity-25">
+    <div class="row announcement">
+        {% for appointement in appointements %}
+            <div class="col-sm-12">
+                <strong>{{ appointement.title }}</strong>
+                <hr class="border border-danger border-3 opacity-25">
+                    <p>
+                        {{ appointement.time }} 
+                        {% if appointement.frequency == 0 %}
+                            <strong>every year</strong>
+                        {% elif appointement.frequency == 1 %}
+                            <strong>every month</strong>
+                        {% else %}
+                            <strong>every day</strong>
+                        {% endif %}
+                    </p>
+                <br>
+            </div>
+        {% endfor %}
+    </div>
+    
+{% endblock %}

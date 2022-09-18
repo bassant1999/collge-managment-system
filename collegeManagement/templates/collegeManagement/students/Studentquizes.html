@@ -1,0 +1,15 @@
+{% extends "collegeManagement/students/studentsLayout.html" %}
+
+{% block body %}
+<h1>Quizes</h1>
+<hr class="border border-danger border-3 opacity-25">
+<div>
+    {% for quiz in quizes %}
+        <div class="col-sm-12">
+            <a href="{% url 'studentShowQuiz' quiz.id %}" style="display:block; margin: 10px;">
+                quiz {{quiz.id}}
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

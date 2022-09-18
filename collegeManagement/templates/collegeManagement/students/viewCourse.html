@@ -1,0 +1,22 @@
+
+{% extends "collegeManagement/students/studentsLayout.html" %}
+
+{% block body %}
+    <h1>View Course</h1>
+    <hr class="border border-danger border-3 opacity-25">
+    <div class="row teached_course">
+        <div class="col-sm-12">
+            <a href="{% url 'slectures' cid %}">lectures</a>
+        </div>
+        <div class="col-sm-12">
+            <a href="{% url 'sannouncements' cid %}">Announcements</a>
+        </div>
+        <div class="col-sm-12">
+            <a href="{% url 'studentQuizes' cid %}">Quizes</a>
+        </div>
+        <div class="col-sm-12">
+            <a href="{% url 'studentAppointements' cid %}">apointments</a>
+        </div>
+    </div>
+    
+{% endblock %}

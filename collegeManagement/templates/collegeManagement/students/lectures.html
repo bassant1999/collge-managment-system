@@ -1,0 +1,17 @@
+{% extends "collegeManagement/students/studentsLayout.html" %}
+
+{% block body %}
+<h1>Lectures </h1>
+<hr class="border border-danger border-3 opacity-25">
+<div class="row lectures">
+    <h3>Lectures</h3>
+    {% for lecture in course_lectures %}
+        <div class="col-sm-12">
+            <a href="{% url 'upload' lecture.name 2 %}" target="_blank">
+                <i class="material-icons" style="color:black;">insert_drive_file</i>
+                {{lecture.original_name}}
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

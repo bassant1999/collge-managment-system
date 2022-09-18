@@ -1,0 +1,37 @@
+
+{% extends "collegeManagement/hod/hodLayout.html" %}
+
+{% block body %}
+    <h1>Edit: {{member.admin.username}}</h1>
+    <hr class="border border-danger border-3 opacity-25">
+    <div class="add">
+        <form id="edit-student" onsubmit="return edit()">
+            <div class="messages">
+            </div>
+            <div class="form-group">
+                <input class="form-control mb-2 course-name" type="text" id="username" placeholder="Username" value="{{ member.admin.username}}">
+            </div>
+            <div class="form-group">
+                <input class="form-control mb-2 course-code" type="text" id="fname" placeholder="first name" value="{{member.admin.first_name}}">
+            </div>
+            <div class="form-group">
+                <input class="form-control mb-2 course-code" type="text" id="lname" placeholder="last name" value="{{ member.admin.last_name}}">
+            </div>
+            <div class="form-group">
+                <input class="form-control mb-2 staff-email" type="email" id="email" placeholder="Email" value="{{ member.admin.email}}">
+            </div>
+            {% if type == 1 %}
+                <div class="form-group">
+                    <input class="form-control mb-2 course-code" type="text" id="gpa" placeholder="GPA" value="{{member.GPA}}">
+                </div>
+            {% endif %}
+            <input class="form-control mb-2 course-code" type="hidden" id="id" value="{{member.id}}">
+            <input class="form-control mb-2 course-code" type="hidden" id="type" value="{{type}}">
+            <div class="form-group">
+                <input type="submit" value="Save" class="save">
+            </div>
+        </form>
+    </div>
+   
+    
+{% endblock %}

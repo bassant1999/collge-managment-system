@@ -1,0 +1,23 @@
+
+{% extends "collegeManagement/students/studentsLayout.html" %}
+
+{% block body %}
+<h1>Enroll request</h1>
+<hr class="border border-danger border-3 opacity-25">
+<div class="add">
+    <form onsubmit="return enroll_request()">
+        <div id="course-enroll-messages">
+        </div>
+        <div class="form-group">
+            <input class="form-control mb-2" type="text" name="name" id="course-enroll-name" placeholder="Course Name">
+        </div>
+        <div class="form-group">
+            <input class="form-control mb-2" type="text" name="code" id="course-enroll-code" placeholder="Course Code">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Send" class="save">
+        </div>
+    </form>
+</div>
+    
+{% endblock %}

@@ -1,0 +1,43 @@
+
+{% extends "collegeManagement/students/studentsLayout.html" %}
+
+{% block body %}
+    <h1>Courses Details</h1>
+    <form id="search">
+      <div class="mb-3" style="margin: 20px;">
+          <input type="text" class="form-control search-name" placeholder="Search Course here..." onkeyup="searchCourse(this.value)">
+          <div class="list-group">
+              <!-- <ul>
+                  <a href=""><li>hi</li></a>
+                  <a href=""><li>bye</li></a>
+              </ul> -->
+          </div>
+      </div>
+  </form>
+    <hr class="border border-danger border-3 opacity-25">
+    <a href="{% url 'enrollment' %}" class="btn btn-secondary">Enroll for a Course</a>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Course Name</th>
+              <th scope="col">Course Code</th>
+              <th scope="col">Staff</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for course in courses %}
+                <tr>
+                    <td>{{ course.name }}</td>
+                    <td>{{ course.code }}</td>
+                    <td>{{ course.staff.admin.username}}</td>
+                    <td>
+                        <a href="{% url 'enroll' course.id %}" class="btn btn-success">Enroll request</a>
+                    </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+    
+{% endblock %}

@@ -1,0 +1,26 @@
+
+{% extends "collegeManagement/students/studentsLayout.html" %}
+
+{% block body %}
+    <h1>Quiz {{qid}}</h1>
+    <hr class="border border-danger border-3 opacity-25">
+    <div>
+        <form action="{% url 'studentShowQuiz' qid %}" method="post">
+            {% csrf_token %}
+            {% for question in questions %}
+                <div class="col-sm-12">
+                    <p>
+                        <strong>Question  ({{question.0.id}}) </strong>{{question.0.question}}:
+                    </p>
+                    <div style="padding-left:20px;">
+                        {% for option in question.1 %}
+                            <input type="radio" id="{{option.id}}" name="{{question.0.id}}" value="{{option.option}}">
+                            <label for="{{option.id}}">{{option.option}}</label><br>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            <input type="submit" value="Submit" class="save">
+        </form>
+    </div>
+{% endblock %}

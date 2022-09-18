@@ -1,0 +1,43 @@
+{% extends "collegeManagement/staff/staffLayout.html" %}
+
+{% block body %}
+<h1>Quizes</h1>
+<hr class="border border-danger border-3 opacity-25">
+<div class="row">
+    <div class="col-sm-12" id="questions">
+
+    </div>
+    <div class="col-sm-12">
+        <a class="btn btn-primary" id="add-question" onclick="add_question()">Add Question</a>
+        <form id="question" onsubmit="return add_question_head()">
+            <div class="form-group">
+                <input class="form-control mb-2" type="text" id="question-head" placeholder="Type a Question">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="save">
+            </div>
+        </form>
+        <form id="option" onsubmit="return add_option()">
+            <div class="form-group">
+                <input class="form-control mb-2 op" type="text" id="question-option" placeholder="Type an Option">
+            </div>
+            <input type="hidden" value="{{ cid }}" id="quiz-cid">
+            <div class="form-group">
+                <input type="submit" value="Save option" class="save op">
+                <br>
+                <div>
+                    please type the right option before saving the question, otherwise all the choosen answers by the students will be right.
+                    <input class="form-control mb-2" type="text" id="question-right-answer" placeholder="Type the right answer before saving the question">
+                    <div id="right-answer-message">
+
+                    </div>
+                </div>
+                <br>
+                <a class="btn btn-primary" onclick="save_question()">Save the Question</a>
+            </div>
+        </form>
+        <a class="btn btn-primary" id="submit-quiz" onclick="submit_question()">Submit The Quiz</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+
+{% extends "collegeManagement/hod/hodLayout.html" %}
+
+{% block body %}
+    <h1>Staff Details</h1>
+    <hr class="border border-danger border-3 opacity-25">
+    <a href="{% url 'addMember' 2 %}" class="btn btn-secondary">Add Staff</a>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">username</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for staff in staffs %}
+                <tr>
+                  <td>{{staff.admin.username}}</td>
+                  <td>{{staff.admin.first_name}}</td>
+                  <td>{{staff.admin.last_name}}</td>
+                  <td>{{staff.admin.email}}</td>
+                  <td>
+                      <a href="{% url 'edit' staff.id 2 %}" class="btn btn-success">edit</a>
+                      <a href="{% url 'delete' staff.id 2 %}" class="btn btn-danger">delete</a>
+                  </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+    
+{% endblock %}

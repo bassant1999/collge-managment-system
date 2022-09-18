@@ -1,0 +1,29 @@
+{% extends "collegeManagement/staff/staffLayout.html" %}
+
+{% block body %}
+<h1>Announcements </h1>
+<hr class="border border-danger border-3 opacity-25">
+<div>
+    <form action="{% url 'addAnnouncement' cid %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3>Add Announcement</h3>
+        <textarea class="form-control" name="announcement" placeholder="Type an Announcement" style="margin-left: 20px;"></textarea>
+        <br>
+        <input type="submit" value ="Upload">
+    </form> 
+</div>
+
+<hr class="border border-danger border-3 opacity-25">
+<h3>Announcements</h3>
+<div class="row announcement">
+    {% for announcement in course_announcements %}
+        <div class="col-sm-12">
+                {{announcement.announcement}}
+                <br>
+                <div style="display: flex; justify-content: flex-end;">
+                    <strong style="color: rgb(155, 154, 154);">{{announcement.created_at}}</strong>
+                </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "collegeManagement/layout.html" %}
+{% load static %}
+{% block title %} Register {% endblock title %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark login-nav">
+	<a class="navbar-brand" href="login ">Login</a>
+</nav>
+<div class="login-container">
+	<div class="login">
+		<div id ="register-messages">
+
+		</div>
+		<form onsubmit="return register()">
+			<h1 class="login-text">Request to join</h1>
+			<hr>
+			<div class="form-group">
+				<input class="form-control mb-2" type="text" name="username" id="register-username" placeholder="username">
+			</div>
+			<div class="form-group">
+				<input class="form-control mb-2" type="text" name="first_name" id="register-fname"  placeholder="First Name">
+			</div>
+			<div class="form-group">
+				<input class="form-control mb-2" type="text" name="last_name" id="register-lname" placeholder="Last Name">
+			</div>
+			<div class="form-group">
+				<input class="form-control mb-2" type="email" name="email" id="register-email" placeholder="Email">
+			</div>
+			<div class="form-group">
+				<input class="form-control mb-2" type="password" name="password" id="register-pwd"  placeholder="Password">
+			</div>
+			<div class="form-group">
+				<input class="form-control mb-2" type="password" name="confirmPassword" id="register-conpwd"  placeholder="Confirm Password">
+			</div>	
+			<div class="form-group">
+				<select class="form-select" name="type" id="register-type" aria-label="Default select example">
+					<option value="1" selected>Select type</option>
+					<option value="1">Student</option>
+					<option value="0">Staff</option>
+				</select>
+			</div>
+			<div class="form-group" style="text-align:center;">
+				<button class="btn btn-primary login-submit" type="submit">Join Request</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+{% endblock body %}

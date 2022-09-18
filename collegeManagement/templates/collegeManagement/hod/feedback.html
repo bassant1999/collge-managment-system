@@ -1,0 +1,35 @@
+
+{% extends "collegeManagement/hod/hodLayout.html" %}
+
+{% block body %}
+    <h1>Feedbacks</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">username</th>
+              <th scope="col">email</th>
+              <th scope="col">Feedback</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for feedback in feedbacks %}
+                <tr>
+                  <td>{{feedback.user.username}}</td>
+                  <td>{{feedback.user.email}}</td>
+                  <td>{{feedback.feedback}}</td>
+                  <td>
+                        <form class="feedback-reply" onsubmit="return feedback_reply(this)">
+                            <textarea class="form-control reply-on-feedback" placeholder="Leave a Reply here" ></textarea>
+                            <br>
+                            <input type="hidden" value="{{feedback.id}}">
+                            <button type="submit" class="btn btn-primary">Send reply</button>
+                        </form>
+                       <a onclick="reply(this)" class="btn btn-success reply">Reply</a>
+                  </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+    
+{% endblock %}

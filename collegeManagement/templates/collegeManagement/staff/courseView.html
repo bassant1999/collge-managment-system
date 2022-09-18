@@ -1,0 +1,31 @@
+{% extends "collegeManagement/staff/staffLayout.html" %}
+
+{% block body %}
+<h1>Course</h1>
+<form>
+    <div class="mb-3" style="margin: 20px;">
+        <input type="text" class="form-control search-name" placeholder="Search here..." onkeyup="search(this.value)">
+        <div class="list-group">
+            <!-- <ul>
+                <a href=""><li>hi</li></a>
+                <a href=""><li>bye</li></a>
+            </ul> -->
+        </div>
+    </div>
+</form>
+<hr class="border border-danger border-3 opacity-25">
+<div class="row teached_course">
+    <div class="col-sm-12">
+        <a href="{% url 'staffLectures' cid %}">lectures</a>
+    </div>
+    <div class="col-sm-12">
+        <a href="{% url 'announcements' cid %}">Announcements</a>
+    </div>
+    <div class="col-sm-12">
+        <a href="{% url 'quizes' cid %}">Quizes</a>
+    </div>
+    <div class="col-sm-12">
+        <a href="{% url 'appointements' cid %}">apointments</a>
+    </div>
+</div>
+{% endblock %}

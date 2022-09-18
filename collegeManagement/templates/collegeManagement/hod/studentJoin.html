@@ -1,0 +1,36 @@
+
+{% extends "collegeManagement/hod/hodLayout.html" %}
+
+{% block body %}
+    <h1>Students' Request To Join</h1>
+    <hr class="border border-danger border-3 opacity-25">
+    <div class="accept-all">
+        <a href="{% url 'acceptAll' 1 %}">Accept ALL</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">username</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for student in students %}
+                <tr>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.first_name }}</td>
+                    <td>{{ student.last_name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>
+                        <a href="{% url 'accept' student.id 1 %}" class="btn btn-success">Accept</a>
+                        <a href="{% url 'reject' student.id 1 %}" class="btn btn-danger">Reject</a>
+                    </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+    
+{% endblock %}

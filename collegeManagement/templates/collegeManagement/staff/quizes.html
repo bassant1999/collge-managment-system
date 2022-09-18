@@ -1,0 +1,22 @@
+{% extends "collegeManagement/staff/staffLayout.html" %}
+
+{% block body %}
+<h1>Quizes</h1>
+<hr class="border border-danger border-3 opacity-25">
+<h3>Add Quiz</h3>
+<div class="row teached_course">
+    <div class="col-sm-12">
+        <a href="{% url 'addQuiz' cid %}">Add Quiz</a>
+    </div>
+</div>
+<hr class="border border-danger border-3 opacity-25">
+<div>
+    {% for quiz in quizes %}
+        <div class="col-sm-12">
+            <a href="{% url 'showQuiz' quiz.id %}">
+                quiz {{quiz.id}}
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+
+{% extends "collegeManagement/hod/hodLayout.html" %}
+
+{% block body %}
+<h1>Results</h1>
+<hr class="border border-danger border-3 opacity-25">
+<table class="table table-striped">
+    <thead>
+            <tr>
+            <th scope="col">Course Name</th>
+            <th scope="col">Course Code</th>
+            <th scope="col">Username</th>
+            <th scope="col">Quiz</th>
+            <th scope="col">Result</th>
+            </tr>
+      </thead>
+      <tbody>
+            {% for result in results %}
+                <tr>
+                    <td>{{ result.quiz.course.name }}</td>
+                    <td>{{ result.quiz.course.code }}</td>
+                    <td>{{ result.user.username }}</td>
+                    <td>Quiz {{ result.quiz.id}}</td>
+                    <td>{{ result.result }} / {{result.total}}</td>
+                </tr>
+            {% endfor %}
+      </tbody>
+</table>
+
+   
+{% endblock %}

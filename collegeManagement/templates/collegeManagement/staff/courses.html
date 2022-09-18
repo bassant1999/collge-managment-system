@@ -1,0 +1,35 @@
+{% extends "collegeManagement/staff/staffLayout.html" %}
+
+{% block body %}
+<h1>Courses</h1>
+<form>
+    <div class="mb-3" style="margin: 20px;">
+        <input type="text" class="form-control search-name" placeholder="Search for Course here..." onkeyup="searchCourse(this.value)">
+        <div class="list-group">
+            <!-- <ul>
+                <a href=""><li>hi</li></a>
+                <a href=""><li>bye</li></a>
+            </ul> -->
+        </div>
+    </div>
+</form>
+<hr class="border border-danger border-3 opacity-25">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Course Name</th>
+              <th scope="col">Course Code</th>
+              <th scope="col">Staff</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for course in courses %}
+                <tr>
+                    <td>{{ course.name }}</td>
+                    <td>{{ course.code }}</td>
+                    <td>{{ course.staff.admin.username}}</td>
+                </tr>
+            {% endfor %}    
+          </tbody>
+    </table>
+{% endblock %}

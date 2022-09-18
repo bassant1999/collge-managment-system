@@ -1,0 +1,19 @@
+
+{% extends "collegeManagement/students/studentsLayout.html" %}
+
+{% block body %}
+    <h1>Apply For Leave</h1>
+    <hr class="border border-danger border-3 opacity-25">
+    <h3>Send Request</h3>
+    <hr class="border border-danger border-3 opacity-25">
+    <div>
+        <form action="{% url 'leave' %}" method="post">
+            {% csrf_token %}
+            <textarea class="form-control" placeholder="Reason for leave.." name="reason" style="padding:10px; margin-left: 20px;"></textarea>
+            <br>
+            <input type="submit" value ="Save">
+        </form> 
+    </div>
+
+    
+{% endblock %}

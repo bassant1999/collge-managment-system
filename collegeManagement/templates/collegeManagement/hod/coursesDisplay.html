@@ -1,0 +1,37 @@
+
+{% extends "collegeManagement/hod/hodLayout.html" %}
+
+{% block body %}
+    <h1>Courses Details</h1>
+    <hr class="border border-danger border-3 opacity-25">
+    <a href="{% url 'addCourse' %}" class="btn btn-secondary">Add Course</a>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Course Name</th>
+              <th scope="col">Course Code</th>
+              <th scope="col">Staff</th>
+              <th scope="col">Created At</th>
+              <th scope="col">Updated At</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for course in courses %}
+                <tr>
+                    <td>{{ course.name }}</td>
+                    <td>{{ course.code }}</td>
+                    <td>{{ course.staff.admin.username}}</td>
+                    <td>{{ course.created_at }}</td>
+                    <td>{{ course.updated_at }}</td>
+                    <td>
+                        <a href="" class="btn btn-success">Edit</a>
+                        <a href="" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+    
+{% endblock %}

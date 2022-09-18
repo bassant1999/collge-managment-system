@@ -1,0 +1,65 @@
+
+{% extends "collegeManagement/layout.html" %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark login-nav">
+    {% if user.user_type == "3" %}
+        <a href="{% url 'studentHome' %}" class="navbar-brand" style="color:#F5E8E4;"> Home</a>
+    {% elif user.user_type == "1" %}
+        <a href="{% url 'HODHome' %}" class="navbar-brand" style="color:#F5E8E4;"> Home</a>
+    {% else %}
+        <a href="{% url 'staffHome' %}" class="navbar-brand" style="color:#F5E8E4;"> Home</a>
+    {% endif %}  
+</nav>
+<nav class="navbar navbar-expand-lg navbar-dark login-nav">
+    <a class="navbar-brand" href="{% url 'logout_user' %}" style="color:#F5E8E4"> LogOut</a></a>
+</nav>
+    <h1>Chats</h1>
+    <form id="search">
+        <div class="mb-3" style="margin: 20px;">
+            <input type="text" class="form-control search-name" placeholder="Search for chat here..." onkeyup="search(this.value)">
+            <div class="list-group">
+            </div>
+        </div>
+    </form>
+    <hr class="border border-danger border-3 opacity-25">
+    <div class="container-fluid items">
+        {% for chat in chats_messages %}
+            {% if chat.0.user1.id == user.id %}
+                <a href="{% url 'chat' chat.0.user2.id %}" class="chat">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <i class="material-icons" style="font-size:70px; height:100%;">account_circle</i>
+                        </div>
+                        
+                        <div class="col-sm-10">
+                            <h3 class="head">{{chat.0.user2}}</h3>
+                            <span>{{chat.1.message}}</span>
+                        </div>
+                        <div class="col-sm-1">
+                            {{chat.1.created_at}}
+                        </div>
+                    </div>
+                </a>
+            {% else %}
+                <a href="{% url 'chat' chat.0.user1.id %}" class="chat">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <i class="material-icons" style="font-size:70px; height:100%;">account_circle</i>
+                        </div>
+                        
+                        <div class="col-sm-10">
+                            <h3 class="head">{{chat.0.user1}}</h3>
+                            <span> {{chat.1.message}} </span>
+                        </div>
+                        <div class="col-sm-1">
+                            {{chat.1.created_at}}
+                        </div>
+                    </div>
+                </a>
+            {% endif %} 
+        {% endfor %}
+        
+    </div>
+    
+{% endblock %}

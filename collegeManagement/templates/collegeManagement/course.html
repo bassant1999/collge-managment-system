@@ -1,0 +1,65 @@
+
+{% extends "collegeManagement/layout.html" %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark login-nav">
+    {% if user.user_type == "3" %}
+        <a href="{% url 'studentHome' %}" class="navbar-brand" style="color:#F5E8E4;"> Home</a>
+    {% elif user.user_type == "1" %}
+        <a href="{% url 'HODHome' %}" class="navbar-brand" style="color:#F5E8E4;"> Home</a>
+    {% else %}
+        <a href="{% url 'staffHome' %}"  class="navbar-brand" style="color:#F5E8E4;"> Home</a>
+    {% endif %}  
+</nav>
+<nav class="navbar navbar-expand-lg navbar-dark login-nav">
+    <a class="navbar-brand" href="{% url 'logout_user' %}" style="color:#F5E8E4"> LogOut</a>
+</nav>
+    <h1 style="padding: 15px;"> Course: {{course.name}} ({{course.code}})</h1>
+    <hr class="border border-danger border-3 opacity-25">
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="{% url 'enroll' course.id %}">Enroll for this Course</a>
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-6 course-details">
+                    <h3><strong>Course Details: </strong></h3>
+                    <div>
+                        <strong>Course Name: </strong><a href="">{{course.name}} </a>
+                    </div>
+                    <div>
+                        <strong>Course Code: </strong><a href="">{{course.code}}</a>
+                    </div>
+                    <div class="row">
+                        <strong>Number of Enrollments: </strong>
+                        <br>
+                        
+                    </div>
+                </div>
+                <div class="col-sm-6 staff-details">
+                    <h3><strong>Staff Details: </strong></h3>
+                    <div>
+                        <strong>Staff username: </strong><a href="">{{course.staff.admin.username}}</a>
+                    </div>
+                    <div>
+                        <strong>Staff name: </strong><a href="">{{course.staff.admin.first_name}} {{course.staff.admin.last_name}}</a>
+                    </div>
+                    <div class="row">
+                        <strong>Staff other Courses: </strong>
+                        <br>
+                        {% for course in staff_courses %}
+                            <div class="col-sm-12">
+                                <a href="{% url 'viewCourse' course.id %}">{{course.name}}</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+        </div>
+        
+    </div>
+    
+{% endblock %}

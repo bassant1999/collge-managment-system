@@ -1,0 +1,52 @@
+{% extends "collegeManagement/staff/staffLayout.html" %}
+
+{% block body %}
+<h1>apointements</h1>
+<hr class="border border-danger border-3 opacity-25">
+<h3>Add Apointement</h3>
+<div>
+    <form action="{% url 'appointements' cid %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Title: </label>
+            <input class="form-control mb-2" type="text" name = "title" placeholder="title">
+        </div>
+        <div class="form-group">
+            <label>Time: </label>
+            <input class="form-control mb-2" type="text" name = "time" placeholder="e.g. 02:30:00">
+        </div>
+        <div class="form-group">
+            <select class="form-select" aria-label="Default select example" name="freq">
+                <option selected>Frequency (number of times)</option>
+                <option value="0">every year</option>
+                <option value="1">every month</option>
+                <option value="2">every day</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="save">
+        </div>
+    </form>
+</div>
+<hr class="border border-danger border-3 opacity-25">
+<h3>Apointements</h3>
+<div class="row announcement">
+    {% for appointement in appointements %}
+        <div class="col-sm-12">
+            <strong>{{ appointement.title }}</strong>
+            <hr class="border border-danger border-3 opacity-25">
+                <p>
+                    {{ appointement.time }} 
+                    {% if appointement.frequency == 0 %}
+                        <strong>every year</strong>
+                    {% elif appointement.frequency == 1 %}
+                        <strong>every month</strong>
+                    {% else %}
+                        <strong>every day</strong>
+                    {% endif %}
+                </p>
+            <br>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

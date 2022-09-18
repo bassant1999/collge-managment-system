@@ -1,0 +1,51 @@
+{% extends "collegeManagement/hod/hodLayout.html" %}
+
+{% block body %}
+    <h1>Home</h1>
+    <form id="search">
+        <div class="mb-3" style="margin: 20px;">
+            <input type="text" class="form-control search-name" placeholder="Search For User here..." onkeyup="searchProfile(this.value)">
+            <div class="list-group">
+            </div>
+        </div>
+    </form>
+    <hr class="border border-danger border-3 opacity-25">
+    {% if user.is_authenticated %}
+        <div class="row">
+            <div class="col-sm-3 info">
+                <h4>Number of Students:</h4>
+                <hr class="border border-danger border-3 opacity-35">
+                <p>{{ studentsNum }}</p>
+            </div>
+            <div class="col-sm-3 info">
+                <h4>Number of Staff:</h4>
+                <hr class="border border-danger border-3 opacity-35">
+                <p>{{ staffsNum }}</p>
+            </div>
+            <div class="col-sm-3 info">
+                <h4>Number of Courses:</h4>
+                <hr class="border border-danger border-3 opacity-35">
+                <p>{{ coursesNum }}</p>
+            </div>
+            <div class="col-sm-3 info">
+                <h4>Number of Requests:</h4>
+                <hr class="border border-danger border-3 opacity-35">
+                <p>{{ requestsNum }}</p>
+            </div>
+            <div class="col-sm-3 info">
+                <h4>Number of new chats:</h4>
+                <hr class="border border-danger border-3 opacity-35">
+                <p>{{ chatsNum }}</p>
+            </div>
+            <div class="col-sm-3 info">
+                <h4>Number of new messages:</h4>
+                <hr class="border border-danger border-3 opacity-35">
+                <p>{{ messagesNum }}</p>
+            </div>
+            
+        </div> 
+    {% else %}
+        not signed in.
+    {% endif %}
+
+{% endblock %}

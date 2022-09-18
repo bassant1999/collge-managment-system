@@ -1,0 +1,45 @@
+{% extends "collegeManagement/students/studentsLayout.html" %}
+
+{% block body %}
+<h1>Home</h1>
+<form>
+    <div class="mb-3" style="margin: 20px;">
+        <input type="text" class="form-control search-name" placeholder="Search For User here..." onkeyup="searchProfile(this.value)">
+        <div class="list-group">
+        </div>
+    </div>
+</form>
+<hr class="border border-danger border-3 opacity-25">
+<div class="row">
+    <div class="col-sm-3 info">
+        <h4>Total Courses:</h4>
+        <hr class="border border-danger border-3 opacity-35">
+        <p>{{coursesNum}}</p>
+    </div>
+    <div class="col-sm-3 info">
+        <h4>GPA:</h4>
+        <hr class="border border-danger border-3 opacity-35">
+        <p>{{student.GPA}}</p>
+    </div>
+    <div class="col-sm-3 info">
+        <h4>Number of feedbacks:</h4>
+        <hr class="border border-danger border-3 opacity-35">
+        <p>{{feedbaksNum}}</p>
+    </div>
+    <div class="col-sm-3 info">
+        <h4>Number of lectures:</h4>
+        <hr class="border border-danger border-3 opacity-35">
+        <p>{{lecturesNum}}</p>
+    </div>
+    <div class="col-sm-3 info">
+        <h4>Number of announcements:</h4>
+        <hr class="border border-danger border-3 opacity-35">
+        <p>{{announesNum}}</p>
+    </div>
+    <div class="col-sm-3 info">
+        <h4>Results Average:</h4>
+        <hr class="border border-danger border-3 opacity-35">
+        <p>{{ResultsAvg.result__avg}}</p>
+    </div>
+</div>
+{% endblock %}
